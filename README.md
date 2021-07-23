@@ -1,54 +1,30 @@
-Zig Language
-============
+# Zig.tmbundle
 
-Syntax highlighting for [Zig](http://ziglang.org/).
+TextMate 2 Bundle for [Zig](https://ziglang.org).
 
-This repository serves both as the grammar for
-[github/linguist](https://github.com/github/linguist) (Github's site wide
-syntax highlighting) and as a standalone Sublime Text package.
+## Install
 
-The source of truth is `Zig.YAML-tmLanguage`. This file is read by linguist
-directly and used as the source to compile to `Zig.tmLanguage` using
-[PackageDev](https://github.com/SublimeText/PackageDev) from within Sublime. Do
-not edit `Zig.tmLanguage` directly.
-
-Installation
------------
-
-Use [Package control](https://packagecontrol.io).
-
-Or add `Zig.tmLanguage` to the packages directory. On OSX This is usually
-
-```
-~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
+```bash
+mkdir -p ~/Library/Application\ Support/TextMate/Bundles
+cd ~/Library/Application\ Support/TextMate/Bundles
+git clone https://github.com/ziglang/Zig.tmbundle.git
 ```
 
-But to find the path on your machine go to `Preferences > Browse Packages` from
-within Sublime Text.
+## Commands
 
-TextMate Installation
----------------------
-
-This language is also compatible with TextMate's `.tmBundle` format. To install in TextMate clone or download this repository. Then rename the repository directory to `Zig.tmBundle` and double-click it to install it into TextMate.
-
-Local Development
------------------
-
-Install https://github.com/SublimeText/PackageDev.
-
-Clone or copy this repository to your local Sublime Text folder. e.g.
-
-```
-git clone https://github.com/ziglang/sublime-zig-language.git "/Users/$USER/Library/Application Support/Sublime Text 3/Packages/Zig Language"
-```
-
-Edit the YAML entry and use the `Convert (YAML, JSON, PList) to...` command
-to generate the other entries. Sublime Text will automatically reload the plugin, showing changes in the build system, syntax highlighting, etc.
+| Command | Description                                   | Keyboard Shortcut |
+| --------| --------------------------------------------- | ----------------- |
+| Build   | Build the current file using `zig build-exe`. | `⌘B`              |
+| Run     | Run the current file using `zig run`.         | `⌘R`              |
+| Test    | Test the current file using `zig test`.       | `⇧⌘R`             |
 
 
-On Linux, this is located under `~/.config/sublime-text-3/`.
+## Specifying the `zig` executable
 
-LICENSE
--------
+By default, TextMate will look for the `zig` executable in the following locations:
 
-Provided under an MIT License
+- `/opt/local/bin/zig`
+- `/usr/local/bin/zig`
+- `/usr/local/zig/bin/zig`
+
+If your `zig` executable is located elsewhere, you can set the `TM_ZIG` variable to the correct location.
